@@ -2,7 +2,7 @@
     "configurations": [
         {
             "name": "Mac",
-            "includePath": ["/usr/include", "./Glitter/Vendor/assimp/include", "./Glitter/Vendor/glad/include", "./Glitter/Vendor/glfw/include", "./Glitter/Vendor/glm", "./Glitter/Vendor/stb"],
+            "includePath": ["/usr/include", "/usr/local/include", "/System/Library/Frameworks/OpenGL.framework/Headers/", "./Glitter/Vendor/assimp/include", "./Glitter/Vendor/glad/include", "./Glitter/Vendor/glfw/include", "./Glitter/Vendor/glm", "./Glitter/Vendor/stb"],
             "browse" : {
                 "limitSymbolsToIncludedHeaders" : true,
                 "databaseFilename" : ""
