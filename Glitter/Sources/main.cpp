@@ -72,7 +72,6 @@ int main(int argc, char * argv[]) {
         return -1;
     }
 
-    glUseProgram(shaderProgram);
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);  
 
@@ -87,6 +86,10 @@ int main(int argc, char * argv[]) {
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)0);
+    glEnableVertexAttribArray(0);
+    glUseProgram(shaderProgram);
 
     // Rendering Loop
     while (glfwWindowShouldClose(mWindow) == false) {
