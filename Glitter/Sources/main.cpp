@@ -6,8 +6,7 @@
 #include <GLFW/glfw3.h>
 
 // Standard Headers
-#include <cstdio>
-#include <cstdlib>
+#include <iostream>
 
 int main(int argc, char * argv[]) {
 
@@ -22,19 +21,20 @@ int main(int argc, char * argv[]) {
 
     // Check for Valid Context
     if (mWindow == nullptr) {
-        fprintf(stderr, "Failed to Create OpenGL Context");
+        std::cerr << "Failed to Create OpenGL Context" << std::endl;
         return EXIT_FAILURE;
     }
 
     // Create Context and Load OpenGL Functions
     glfwMakeContextCurrent(mWindow);
+    glfwSetKeyCallback(mWindow, key_callback);
     gladLoadGL();
-    fprintf(stderr, "OpenGL %s\n", glGetString(GL_VERSION));
+
+    std::cout << "OpenGL" << glGetString(GL_VERSION) << std::endl;
 
     // Rendering Loop
     while (glfwWindowShouldClose(mWindow) == false) {
-        if (glfwGetKey(mWindow, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-            glfwSetWindowShouldClose(mWindow, true);
+        glfwPollEvents();
 
         // Background Fill Color
         glClearColor(0.25f, 0.25f, 0.25f, 1.0f);
@@ -42,7 +42,15 @@ int main(int argc, char * argv[]) {
 
         // Flip Buffers and Draw
         glfwSwapBuffers(mWindow);
-        glfwPollEvents();
-    }   glfwTerminate();
+    }   
+    glfwTerminate();
     return EXIT_SUCCESS;
+}
+
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode)
+{
+    std::cout << key << std::endl;
+    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
+        glfwSetWindowShouldClose(window, GL_TRUE);
+    }
 }
