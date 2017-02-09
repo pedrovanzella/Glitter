@@ -72,6 +72,10 @@ int main(int argc, char * argv[]) {
         return -1;
     }
 
+    glUseProgram(shaderProgram);
+    glDeleteShader(vertexShader);
+    glDeleteShader(fragmentShader);  
+
     GLfloat vertices[] = {
     -0.5f, -0.5f, 0.0f,
      0.5f, -0.5f, 0.0f,
