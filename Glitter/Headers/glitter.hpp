@@ -40,4 +40,15 @@ const GLchar* fragmentShaderSource = "#version 330 core\n"
     "color = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
     "}\n\0";
 
+GLfloat vertices[] = {
+     0.5f,  0.5f, 0.0f,  // Top Right
+     0.5f, -0.5f, 0.0f,  // Bottom Right
+    -0.5f, -0.5f, 0.0f,  // Bottom Left
+    -0.5f,  0.5f, 0.0f   // Top Left 
+};
+GLuint indices[] = {  // Note that we start from 0!
+    0, 1, 3,   // First Triangle
+    1, 2, 3    // Second Triangle
+};  
+
 #endif //~ Glitter Header
