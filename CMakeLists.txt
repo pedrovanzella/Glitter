@@ -53,7 +53,9 @@ source_group("Shaders" FILES ${PROJECT_SHADERS})
 source_group("Sources" FILES ${PROJECT_SOURCES})
 source_group("Vendors" FILES ${VENDORS_SOURCES})
 
-file(COPY "Glitter/Shaders" DESTINATION "${CMAKE_BINARY_DIR}/Glitter")
+foreach(SHADER ${PROJECT_SHADERS})
+    configure_file(${SHADER} "${CMAKE_BINARY_DIR}/Glitter/Shaders/" COPYONLY)
+endforeach()
 
 add_definitions(-DGLFW_INCLUDE_NONE
                 -DPROJECT_SOURCE_DIR=\"${PROJECT_SOURCE_DIR}\")

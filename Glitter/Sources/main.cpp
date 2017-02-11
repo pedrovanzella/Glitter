@@ -33,7 +33,7 @@ int main(int argc, char* argv[]) {
 
     std::cout << "OpenGL" << glGetString(GL_VERSION) << std::endl;
 
-    Shader shader("Shaders/default.vs", "Shaders/default.frag");
+    Shader shader("Shaders/default.vert", "Shaders/default.frag");
 
     GLuint VBO, VAO, EBO;
     glGenBuffers(1, &VBO);
