@@ -42,6 +42,8 @@ file(GLOB PROJECT_SHADERS Glitter/Shaders/*.comp
                           Glitter/Shaders/*.frag
                           Glitter/Shaders/*.geom
                           Glitter/Shaders/*.vert)
+file(GLOB PROJECT_TEXTURES Glitter/Textures/*.jpg
+                           Glitter/Textures/*.png)
 file(GLOB PROJECT_CONFIGS CMakeLists.txt
                           Readme.md
                          .gitattributes
@@ -52,10 +54,17 @@ source_group("Headers" FILES ${PROJECT_HEADERS})
 source_group("Shaders" FILES ${PROJECT_SHADERS})
 source_group("Sources" FILES ${PROJECT_SOURCES})
 source_group("Vendors" FILES ${VENDORS_SOURCES})
+source_group("Textures" FILES ${PROJECT_TEXTURES})
 
 foreach(SHADER ${PROJECT_SHADERS})
     configure_file(${SHADER} "${CMAKE_BINARY_DIR}/Glitter/Shaders/" COPYONLY)
 endforeach()
+
+foreach(TEXTURE ${PROJECT_TEXTURES})
+    configure_file(${TEXTURE} "${CMAKE_BINARY_DIR}/Glitter/Textures/" COPYONLY)
+endforeach()
+
+
 
 add_definitions(-DGLFW_INCLUDE_NONE
                 -DPROJECT_SOURCE_DIR=\"${PROJECT_SOURCE_DIR}\")
