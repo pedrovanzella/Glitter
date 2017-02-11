@@ -2,15 +2,23 @@
     "configurations": [
         {
             "name": "Mac",
-            "includePath": ["/usr/include", "/usr/local/include", "/System/Library/Frameworks/OpenGL.framework/Headers/", "./Glitter/Vendor/assimp/include", "./Glitter/Vendor/glad/include", "./Glitter/Vendor/glfw/include", "./Glitter/Vendor/glm", "./Glitter/Vendor/stb"],
+            "includePath": ["/usr/include/c++/4.2.1",
+                            "Glitter/Headers",
+                            "Glitter/Vendor/assimp/include",
+                            "Glitter/Vendor/glad/include",
+                            "Glitter/Vendor/glfw/include",
+                            "Glitter/Vendor/glm",
+                            "Glitter/Vendor/stb",
+                            "/usr/include",
+                            "/usr/local/include"],
             "browse" : {
                 "limitSymbolsToIncludedHeaders" : true,
-                "databaseFilename" : ""
+                "databaseFilename" : "/Users/pedrovanzella/Code/C++/Glitter/.vscode/browse.vc.db"
             }
         },
         {
             "name": "Linux",
-            "includePath": ["/usr/include", "./Glitter/Vendor/assimp/include", "./Glitter/Vendor/glad/include", "./Glitter/Vendor/glfw/include", "./Glitter/Vendor/glm", "./Glitter/Vendor/stb"],
+            "includePath": ["/usr/include", "Glitter/Headers", "Glitter/Vendor/assimp/include", "Glitter/Vendor/glad/include", "Glitter/Vendor/glfw/include", "Glitter/Vendor/glm", "Glitter/Vendor/stb"],
             "browse" : {
                 "limitSymbolsToIncludedHeaders" : true,
                 "databaseFilename" : ""

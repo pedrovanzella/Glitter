@@ -1,5 +1,6 @@
 // Local Headers
 #include "glitter.hpp"
+#include "shader.hpp"
 
 // System Headers
 #include <glad/glad.h>
@@ -32,48 +33,7 @@ int main(int argc, char* argv[]) {
 
     std::cout << "OpenGL" << glGetString(GL_VERSION) << std::endl;
 
-    GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
-    glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
-    glCompileShader(vertexShader);
-
-    GLint success;
-    GLchar infoLog[512];
-    glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
-
-    if (!success) {
-        glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
-        std::cerr << "ERROR: Vertex Shader Compilation Error!\n" << infoLog << std::endl;
-        return -1;
-    }
-
-    GLuint fragmentShader;
-    fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-    glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
-    glCompileShader(fragmentShader);
-
-    glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &success);
-    if (!success) {
-        glGetShaderInfoLog(fragmentShader, 512, NULL, infoLog);
-        std::cerr << "ERROR: Fragment Shader Compilation Error!\n" << infoLog << std::endl;
-        return -1;
-    }
-
-    GLuint shaderProgram;
-    shaderProgram = glCreateProgram();
-
-    glAttachShader(shaderProgram, vertexShader);
-    glAttachShader(shaderProgram, fragmentShader);
-    glLinkProgram(shaderProgram);
-
-    glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
-    if(!success) {
-        glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
-        std::cerr << "ERROR: Error linking shaders!\n" << infoLog << std::endl;
-        return -1;
-    }
-
-    glDeleteShader(vertexShader);
-    glDeleteShader(fragmentShader);  
+    Shader shader("Shaders/default.vs", "Shaders/default.frag");
 
     GLuint VBO, VAO, EBO;
     glGenBuffers(1, &VBO);
@@ -107,7 +67,8 @@ int main(int argc, char* argv[]) {
         glClearColor(0.25f, 0.25f, 0.25f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
     
-        glUseProgram(shaderProgram);
+        shader.Use();
+
         glBindVertexArray(VAO);
         glDrawArrays(GL_TRIANGLES, 0, 3);
         //glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
