@@ -47,7 +47,7 @@ int main(int argc, char* argv[]) {
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW); 
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
     // Position Attribute
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)0);
@@ -66,7 +66,7 @@ int main(int argc, char* argv[]) {
         // Background Fill Color
         glClearColor(0.25f, 0.25f, 0.25f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
-    
+
         shader.Use();
 
         glBindVertexArray(VAO);
@@ -76,7 +76,7 @@ int main(int argc, char* argv[]) {
 
         // Flip Buffers and Draw
         glfwSwapBuffers(mWindow);
-    }   
+    }
     glfwTerminate();
     return EXIT_SUCCESS;
 }
