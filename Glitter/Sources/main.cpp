@@ -98,7 +98,7 @@ int main(int argc, char* argv[]) {
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     // Load and generate the texture
     data = stbi_load("Textures/awesomeface.png", &x, &y, &n, 0);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, x, y, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, x, y, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
     glGenerateMipmap(GL_TEXTURE_2D);
     stbi_image_free(data);
     glBindTexture(GL_TEXTURE_2D, 0);
@@ -130,6 +130,9 @@ int main(int argc, char* argv[]) {
         // Flip Buffers and Draw
         glfwSwapBuffers(mWindow);
     }
+    glDeleteVertexArrays(1, &VAO);
+    glDeleteBuffers(1, &VBO);
+    glDeleteBuffers(1, &EBO);
     glfwTerminate();
     return EXIT_SUCCESS;
 }
