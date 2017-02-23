@@ -33,7 +33,7 @@ int main(int argc, char* argv[]) {
 
     std::cout << "OpenGL" << glGetString(GL_VERSION) << std::endl;
 
-    Shader shader("Shaders/default.vert", "Shaders/default.frag");
+    Shader shader("Shaders/texture.vsh", "Shaders/texture.fsh");
 
     GLuint VBO, VAO, EBO;
     glGenBuffers(1, &VBO);
@@ -96,6 +96,7 @@ int main(int argc, char* argv[]) {
 
         shader.Use();
 
+        glBindTexture(GL_TEXTURE_2D, texture);
         glBindVertexArray(VAO);
         //glDrawArrays(GL_TRIANGLES, 0, 3);
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
