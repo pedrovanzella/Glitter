@@ -28,11 +28,20 @@ const int mHeight = 800;
 void key_callback(GLFWwindow*, int, int, int, int);
 
 
+// Triangle with colors
+// GLfloat vertices[] = {
+//     // Positions         // Colors
+//      0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,   // Bottom Right
+//     -0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,   // Bottom Left
+//      0.0f,  0.5f, 0.0f,  0.0f, 0.0f, 1.0f    // Top 
+// };
+
 GLfloat vertices[] = {
-    // Positions         // Colors
-     0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,   // Bottom Right
-    -0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,   // Bottom Left
-     0.0f,  0.5f, 0.0f,  0.0f, 0.0f, 1.0f    // Top 
+  // Positions          // Colors           // Texture Coords
+  0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f,   // Top Right
+  0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f,   // Bottom Right
+  -0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f,   // Bottom Left
+  -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f    // Top Left 
 };
 
 GLuint indices[] = {  // Note that we start from 0!
