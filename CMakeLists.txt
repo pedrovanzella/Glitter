@@ -42,7 +42,9 @@ file(GLOB PROJECT_HEADERS Glitter/Headers/*.hpp)
 file(GLOB PROJECT_SOURCES Glitter/Sources/*.cpp)
 file(GLOB PROJECT_SHADERS Glitter/Shaders/*.comp
                           Glitter/Shaders/*.frag
+                          Glitter/Shaders/*.fsh
                           Glitter/Shaders/*.geom
+                          Glitter/Shaders/*.vsh
                           Glitter/Shaders/*.vert)
 file(GLOB PROJECT_TEXTURES Glitter/Textures/*.jpg
                            Glitter/Textures/*.png)
