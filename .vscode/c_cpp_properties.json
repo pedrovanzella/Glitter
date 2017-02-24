@@ -3,17 +3,18 @@
         {
             "name": "Mac",
             "includePath": ["/usr/include/c++/4.2.1",
-                            "Glitter/Headers",
-                            "Glitter/Vendor/assimp/include",
-                            "Glitter/Vendor/glad/include",
-                            "Glitter/Vendor/glfw/include",
-                            "Glitter/Vendor/glm",
-                            "Glitter/Vendor/stb",
+                            "/Users/pedrovanzella/Code/OpenGL/Glitter/Glitter/Headers",
+                            "/Users/pedrovanzella/Code/OpenGL/Glitter/Glitter/Vendor/assimp/include",
+                            "/Users/pedrovanzella/Code/OpenGL/Glitter/Glitter/Vendor/bullet/src",
+                            "/Users/pedrovanzella/Code/OpenGL/Glitter/Glitter/Vendor/glad/include",
+                            "/Users/pedrovanzella/Code/OpenGL/Glitter/Glitter/Vendor/glfw/include",
+                            "/Users/pedrovanzella/Code/OpenGL/Glitter/Glitter/Vendor/glm",
+                            "/Users/pedrovanzella/Code/OpenGL/Glitter/Glitter/Vendor/stb",
                             "/usr/include",
                             "/usr/local/include"],
             "browse" : {
                 "limitSymbolsToIncludedHeaders" : true,
-                "databaseFilename" : "/Users/pedrovanzella/Code/C++/Glitter/.vscode/browse.vc.db"
+                "databaseFilename" : "/Users/pedrovanzella/Code/OpenGL/Glitter/.vscode/browse.vc.db"
             }
         },
         {
