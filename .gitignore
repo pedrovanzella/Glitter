@@ -4,3 +4,4 @@ cmake-build*
 .idea/workspace.xml
 .vscode/browse.vc.db
 .vscode/browse.vc.db-wal
+.vscode/browse.vc.db-shm

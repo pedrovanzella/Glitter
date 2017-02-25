@@ -40,7 +40,7 @@ int main(int argc, char* argv[]) {
     glGenBuffers(1, &EBO);
     glGenVertexArrays(1, &VAO);
 
-    /* -------- Initialization -------- */
+    // -------- Initialization --------
     glBindVertexArray(VAO);
 
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
@@ -64,7 +64,7 @@ int main(int argc, char* argv[]) {
     glBindVertexArray(0); // Unbind the VAO
 
 
-    /* ----- TEXTURE ----- */
+    // ----- TEXTURE -----
     // ==========
     // Texture 1
     // ==========
@@ -84,9 +84,9 @@ int main(int argc, char* argv[]) {
     glGenerateMipmap(GL_TEXTURE_2D);
     stbi_image_free(data);
     glBindTexture(GL_TEXTURE_2D, 0);
-    //==========
+    // ==========
     // Texture 2
-    //==========
+    // ==========
     GLuint texture2;
     glGenTextures(1, &texture2);
     glBindTexture(GL_TEXTURE_2D, texture2);
