@@ -60,10 +60,12 @@ source_group("Sources" FILES ${PROJECT_SOURCES})
 source_group("Vendors" FILES ${VENDORS_SOURCES})
 source_group("Textures" FILES ${PROJECT_TEXTURES})
 
+file(MAKE_DIRECTORY "${CMAKE_BINARY_DIR}/Glitter/Shaders/")
 foreach(SHADER ${PROJECT_SHADERS})
     configure_file(${SHADER} "${CMAKE_BINARY_DIR}/Glitter/Shaders/" COPYONLY)
 endforeach()
 
+file(MAKE_DIRECTORY "${CMAKE_BINARY_DIR}/Glitter/Textures/")
 foreach(TEXTURE ${PROJECT_TEXTURES})
     configure_file(${TEXTURE} "${CMAKE_BINARY_DIR}/Glitter/Textures/" COPYONLY)
 endforeach()
