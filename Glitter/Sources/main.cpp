@@ -9,6 +9,11 @@
 // Standard Headers
 #include <iostream>
 
+// GLM
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
 int main(int argc, char* argv[]) {
 
     // Load GLFW and Create a Window
@@ -120,6 +125,13 @@ int main(int argc, char* argv[]) {
         glBindTexture(GL_TEXTURE_2D, texture2);
         glUniform1i(glGetUniformLocation(shader.Program, "ourTexture2"), 1);
 
+        // Matrix transformations
+        glm::mat4 trans;
+        trans = glm::translate(trans, glm::vec3(0.5f, -0.5f, 0.0f));
+        trans = glm::rotate(trans, glm::radians((GLfloat)glfwGetTime() * 50.0f), glm::vec3(0.0, 0.0, 1.0));
+
+        GLuint transformLoc = glGetUniformLocation(shader.Program, "transform");
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
 
         glBindVertexArray(VAO);
         //glDrawArrays(GL_TRIANGLES, 0, 3);
