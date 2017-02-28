@@ -126,12 +126,21 @@ int main(int argc, char* argv[]) {
         glUniform1i(glGetUniformLocation(shader.Program, "ourTexture2"), 1);
 
         // Matrix transformations
-        glm::mat4 trans;
-        trans = glm::translate(trans, glm::vec3(0.5f, -0.5f, 0.0f));
-        trans = glm::rotate(trans, glm::radians((GLfloat)glfwGetTime() * 50.0f), glm::vec3(0.0, 0.0, 1.0));
+        glm::mat4 model;
+        model = glm::rotate(model, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+        glm::mat4 view;
+        // Translating the scene in the reverse direction of where we want to move
+        view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
 
-        GLuint transformLoc = glGetUniformLocation(shader.Program, "transform");
-        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
+        glm::mat4 projection;
+        projection = glm::perspective(glm::radians(45.0f), (float)(mWidth) / (float)(mHeight), 0.1f, 100.0f);
+
+        GLuint modelLoc = glGetUniformLocation(shader.Program, "model");
+        glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+        GLuint viewLoc = glGetUniformLocation(shader.Program, "view");
+        glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
+        GLuint projectionLoc = glGetUniformLocation(shader.Program, "projection");
+        glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(projection));
 
         glBindVertexArray(VAO);
         //glDrawArrays(GL_TRIANGLES, 0, 3);
