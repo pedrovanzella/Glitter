@@ -64,7 +64,7 @@ int main(int argc, char* argv[]) {
     // glEnableVertexAttribArray(1);
 
     // Texture Attribute
-    glVertexAttribPointer(2, 2, GL_FLOAT,GL_FALSE, 5 * sizeof(GLfloat), (GLvoid*)(4 * sizeof(GLfloat)));
+    glVertexAttribPointer(2, 2, GL_FLOAT,GL_FALSE, 5 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
     glEnableVertexAttribArray(2);  
 
     glBindVertexArray(0); // Unbind the VAO
@@ -109,6 +109,19 @@ int main(int argc, char* argv[]) {
     stbi_image_free(data);
     glBindTexture(GL_TEXTURE_2D, 0);
 
+    glm::vec3 cubePositions[] = {
+      glm::vec3( 0.0f,  0.0f,  0.0f),
+      glm::vec3( 2.0f,  5.0f, -15.0f),
+      glm::vec3(-1.5f, -2.2f, -2.5f),
+      glm::vec3(-3.8f, -2.0f, -12.3f),
+      glm::vec3( 2.4f, -0.4f, -3.5f),
+      glm::vec3(-1.7f,  3.0f, -7.5f),
+      glm::vec3( 1.3f, -2.0f, -2.5f),
+      glm::vec3( 1.5f,  2.0f, -2.5f),
+      glm::vec3( 1.5f,  0.2f, -1.5f),
+      glm::vec3(-1.3f,  1.0f, -1.5f)
+    };
+
     // Rendering Loop
     while (glfwWindowShouldClose(mWindow) == false) {
         glfwPollEvents();
@@ -144,8 +157,15 @@ int main(int argc, char* argv[]) {
         glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(projection));
 
         glBindVertexArray(VAO);
-        glDrawArrays(GL_TRIANGLES, 0, 36);
-        //glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+        for (GLuint i = 0; i < 10; i++) {
+          glm::mat4 model;
+          model = glm::translate(model, cubePositions[i]);
+          GLfloat angle = (GLfloat)glfwGetTime() * glm::radians(20.0f) * (i + 1);
+          model = glm::rotate(model, angle, glm::vec3(1.0f, 0.3f, 0.5f));
+          glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+
+          glDrawArrays(GL_TRIANGLES, 0, 36);
+        }
         glBindVertexArray(0);
 
         // Flip Buffers and Draw
